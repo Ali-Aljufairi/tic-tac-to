@@ -6,6 +6,10 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 h1 {
@@ -87,4 +91,13 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.restart-button {
+  display: block;
+  margin: 20px auto;
+}
+
+.board-container {
+  text-align: center;
 }

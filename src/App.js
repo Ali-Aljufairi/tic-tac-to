@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import './App.css';
 
 function Square({value, onSquareClick}) {
   function handleClick(event) {
     event.preventDefault();
     onSquareClick();
   }
-   return (
+
+  return (
     <button className="square" onClick={handleClick}>
       {value}
     </button>
@@ -20,14 +22,21 @@ export default function Board() {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = 'X';
     } else {
       nextSquares[i] = 'O';
     }
+
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
+  }
+
+  function restartGame() {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
   }
 
   const winner = calculateWinner(squares);
@@ -58,6 +67,7 @@ export default function Board() {
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
         </div>
       </div>
+      <button className="restart-button" onClick={restartGame}>Restart</button>
     </div>
   );
 }
@@ -73,11 +83,13 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
+
   return null;
 }
