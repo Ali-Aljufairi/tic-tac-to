@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-function Square({value, onSquareClick}) {
+function Square({ value, onSquareClick }) {
   function handleClick(event) {
     event.preventDefault();
     onSquareClick();
@@ -25,9 +25,9 @@ export default function Board() {
 
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = 'X';
+      nextSquares[i] = "X";
     } else {
-      nextSquares[i] = 'O';
+      nextSquares[i] = "O";
     }
 
     setSquares(nextSquares);
@@ -42,13 +42,20 @@ export default function Board() {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = "Winner: " + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
   return (
     <div className="board-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3 class="animate-charcter"> XO</h3>
+          </div>
+        </div>
+      </div>
       <div className="status">{status}</div>
       <div className="board">
         <div className="board-row">
@@ -67,7 +74,9 @@ export default function Board() {
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
         </div>
       </div>
-      <button className="restart-button" onClick={restartGame}>Restart</button>
+      <button className="restart-button" onClick={restartGame}>
+        Restart
+      </button>
     </div>
   );
 }
