@@ -56,7 +56,8 @@ export default function Board() {
           </div>
         </div>
       </div>
-      <div className="status">{status}</div>
+      <div className="status">
+        <h4> {status} </h4></div>
       <div className="board">
         <div className="board-row">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
