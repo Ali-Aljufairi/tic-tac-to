@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "./App.css";
 
-function Square({ value, onSquareClick }) {
+function Square({ value, onSquareClick ,xIsNext}) {
   function handleClick(event) {
     event.preventDefault();
     onSquareClick();
   }
 
-  return (
-    <button className="square" onClick={handleClick}>
+   return (
+    <button className={`square ${xIsNext ? 'square-x' : 'square-o'}`} onClick={handleClick}>
       {value}
     </button>
   );
+
 }
 
 export default function Board() {
@@ -48,6 +49,11 @@ export default function Board() {
   }
 
   return (
+  
+
+    
+
+
     <div className="board-container">
       <div class="container">
         <div class="row">
@@ -60,19 +66,24 @@ export default function Board() {
         <h4> {status} </h4></div>
       <div className="board">
         <div className="board-row">
-          <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-          <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-          <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+          <Square value={squares[0]} onSquareClick={() => handleClick(0)} xIsNext={xIsNext} />
+
+          <Square value={squares[1]} onSquareClick={() => handleClick(1)} xIsNext={xIsNext} />
+
+          <Square value={squares[2]} onSquareClick={() => handleClick(2)} xIsNext={xIsNext} />
+
         </div>
         <div className="board-row">
-          <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-          <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-          <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+
+          <Square value={squares[3]} onSquareClick={() => handleClick(3)} xIsNext={xIsNext} /> 
+          <Square value={squares[4]} onSquareClick={() => handleClick(4)} xIsNext={xIsNext} />
+          <Square value={squares[5]} onSquareClick={() => handleClick(5)} xIsNext={xIsNext} />
         </div>
         <div className="board-row">
-          <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-          <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-          <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+
+          <Square value={squares[6]} onSquareClick={() => handleClick(6)} xIsNext={xIsNext} />
+          <Square value={squares[7]} onSquareClick={() => handleClick(7)} xIsNext={xIsNext} />
+          <Square value={squares[8]} onSquareClick={() => handleClick(8)} xIsNext={xIsNext} />
         </div>
       </div>
       <button className="restart-button" onClick={restartGame}>
